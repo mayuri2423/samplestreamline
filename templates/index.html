@@ -1,0 +1,417 @@
+<!-- # -*- coding: utf-8 -*-
+"""
+Created on Fri May 20 20:40:26 2022
+
+@author: Mayuri Warankar
+""" -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+
+	<title>
+		Medical Sample Collection Process Streamline
+	</title>
+	<style>
+		body {
+			
+    background-image: url("./img/img.jpeg");
+    text-align: center;
+    /* background-repeat: no-repeat !important; */
+    background-attachment: fixed;
+    background-position: center;
+}
+
+	</style>
+</head>
+
+<body>
+  
+       <h1 style="color:white;">
+			<marquee width="60%" direction="right"> WELCOME</marquee>
+		</h1>
+		<section>
+				<div class="content">
+					<h1 style="font-family:verdana ">Medical Sample Collection Process Streamline </h1>
+					<h3 style="color:red;">
+						<marquee width="60%" direction="left">checking whether the sample reached on time or not
+						</marquee>
+					</h3>
+					<form action="/predict" method="POST">
+
+						<div class="sec1">
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Patient Gender</h5>
+											<!-- Patient Gender -->
+											<select name="Patient_Gender" id="Patient_Gender" required="required">
+												<option value="1">Male</option>
+												<option value="0">Female</option>
+
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Test Name</h5>
+											<!-- Test_Name  -->
+											<select name="Test_Name" id="Test_Name" required="required">
+												<option value="0">Acute kidney profile</option>
+												<option value="5">HbA1c</option>
+												<option value="9">Vitamin D-25Hydroxy</option>
+												<option value="8">TSH</option>
+												<option value="6">Lipid Profile</option>
+												<option value="2">Complete Urinalysis</option>
+												<option value="7">RTPCR</option>
+												<option value="4">H1N1</option>
+												<option value="3">Fasting blood sugar</option>
+												<option value="1">CBC</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Sample</h5>
+											<!-- Sample Type -->
+											<select name="Sample" id="Sample" required="required">
+												<option value="0">Blood</option>
+												<option value="2">Urine</option>
+												<option value="1">Swab</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-sm-6">
+								<div class="card">
+									<div class="card-body">
+										<h5 class="card-title">Way Of Storage Of Sample</h5>
+										<!-- Way_Of_Storage_Of_Sample -->
+										<select name="Way_Of_Storage_Of_Sample" id="Way_Of_Storage_Of_Sample"
+											required="required">
+											<option value="0">Advanced</option>
+											<option value="1">Normal</option>
+
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="card">
+										<div class="card-body">
+											<!--Test_Booking_Time_HH_MM -->
+											<h5 class="card-title">Test Booking Time HH.MM (min 3 | max 24) : </h5>
+											<input id="Test_Booking_Time_HH_MM" name="Test_Booking_Time_HH_MM" type="number "
+                                            required="required">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-sm-6">
+								<div class="card">
+									<div class="card-body">
+										<!--Scheduled_Sample_Collection_Time_HH_MM -->
+										<h5 class="card-title">Scheduled Sample Collection Time HH.MM (min 4|max 23):</h5>
+										 <input id="Scheduled_Sample_Collection_Time_HH_MM" name="Scheduled_Sample_Collection_Time_HH_MM" type="number "
+                                        required="required">
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="sec1">
+							<div class="col-sm-6">
+								<div class="card">
+									<div class="card-body">
+										<h5 class="card-title">Cut off Schedule</h5>
+										<!-- Cut_off_Schedule Type -->
+										<select name="Cut_off_Schedule" id="Cut_off_Scheduleample" required="required">
+											<option value="1">Sample by 5pm</option>
+											<option value="0">Daily</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									
+										<div class="card-body">
+											<!--Cut_off_time_HH_MM -->
+											<h5 class="card-title">Cut off time HH.MM (min 1 | max 24) :</h5>
+											<input id="Cut_off_time_HH_MM" name="Cut_off_time_HH_MM" type="number "
+                                              required="required">
+										</div>
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Traffic Conditions</h5>
+											<!--  Traffic_Conditions -->
+											<select name="Traffic_Conditions" id="Traffic_Conditions"
+												required="required">
+												<option value="1">Low Traffic</option>
+												<option value="2">Medium Traffic</option>
+												<option value="0">High Traffic</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="card">
+									<div class="card-body">
+										<h5 class="card-title">Agent Location KM (min 1 | max 90) : </h5>
+										<input id="Agent_Location_KM" name="Agent_Location_KM" type="number "
+											required="required">
+									</div>
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="card-body">
+										<h5 class="card-title">Time Taken  To  Reach Patient MM (min 2 | max 420) : </h5>
+										<input id="Time_Taken_To_Reach_Patient_MM" name="Time_Taken_To_Reach_Patient_MM"
+											type="number " required="required">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="card">
+									<div class="card-body">
+										<h5 class="card-title">Time For  Sample Collection MM (min 1 | max 36) : </h5>
+										<input id="Time_For_Sample_Collection_MM" name="Time_For_Sample_Collection_MM"
+											type="number " required="required">
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="card-body">
+										<h5 class="card-title">Lab Location KM (min 1 | max 81) :  </h5>
+										<input id="Lab_Location_KM" name="Lab_Location_KM" type="number "
+											required="required">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="card">
+									<div class="card-body">
+										<h5 class="card-title">Time Taken To  Reach  Lab MM (min 2 | max 420) : </h5>
+										<input id="Time_Taken_To_Reach_Lab_MM" name="Time_Taken_To_Reach_Lab_MM"
+											type="number " required="required">
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<center style="padding: 20px;">
+						 
+			            	<button type="submit" class="btn btn-outline-primary btn-lg">Predict</button>
+                                <h1 class="navbar-brand">{{ output }}</h1>
+							
+							<p><i>©2022 Mayuri Warankar</i></p>
+						</center>
+						<h1 style="padding-bottom:25px;">
+							<marquee width="60%" direction="right"> THANK YOU !!!</marquee>
+						</h1>
+						
+						
+				</div>
+		</div>
+	</div>
+
+
+	</section>
+	    
+		<style>
+			body {
+				background-color: #000000;
+				background-image: linear-gradient(315deg, #0c0c0c 0%, #D2A813 250%);
+				text-align: center;
+				padding: 10px;
+				min-height:100vh;
+			}
+			
+			section {
+				margin: 80px 400px;
+				padding: 50px;
+				border-radius: 10px;
+				background-image: linear-gradient(to left,#ffd89b, #19547b );
+				
+				width:max-content;
+			}
+			
+			#research {
+				font-size: 30px;
+				width: 100px;
+				height: 23px;
+				top: 23px;
+			}
+			
+			#box {
+				border-radius: 60px;
+				border-color: 45px;
+				border-style: solid;
+				font-family: cursive;
+				text-align: center;
+				background-color: rgb(168, 131, 61);
+				font-size: medium;
+				position: absolute;
+				width: 700px;
+				bottom: 9%;
+				height: 850px;
+				right: 30%;
+				padding: 0px;
+				margin: 10px;
+				font-size: 20px;
+			}
+			
+			#fuel {
+				width: 83px;
+				height: 43px;
+				text-align: center;
+				border-radius: 14px;
+				font-size:30px;
+			}
+			
+			#fuel:hover {
+				background-color: coral;
+			}
+			
+			#research {
+				width: 99px;
+				height: 43px;
+				text-align: center;
+				border-radius: 14px;
+				font-size: 30px;
+			}
+			
+			#research:hover {
+				background-color: coral;
+			}
+			
+			#resea {
+				width: 99px;
+				height: 43px;
+				text-align: center;
+				border-radius: 14px;
+				font-size: 30px;
+			}
+			
+			#resea:hover {
+				background-color: coral;
+			}
+			
+			#sub {
+				width: 120px;
+				height: 43px;
+				text-align: center;
+				border-radius: 14px;
+				font-size: 30px;
+			}
+			
+			#sub:hover {
+				background-color: darkcyan;
+			}
+			
+			#first {
+				border-radius: 14px;
+				height: 25px;
+				font-size: 30px;
+				text-align: center;
+			}
+			
+			#second {
+				border-radius: 14px;
+				height: 25px;
+				font-size: 30px;
+				text-align: center;
+			}
+			
+			#third {
+				border-radius: 14px;
+				height: 25px;
+				font-size: 30px;
+				text-align: center;
+			}
+			
+			#fourth {
+				border-radius: 14px;
+				height: 25px;
+				font-size: 30px;
+				text-align: center;
+			}
+			
+			#fifth {
+				border-radius: 14px;
+				height: 25px;
+				font-size: 30px;
+				text-align: center;
+			}
+			
+			option {
+				font-family:cursive;
+				font-style:oblique;
+			}
+			
+			select {
+				font-family:cursive;
+				font-style:oblique;
+			}
+			.content{
+				max-width: 500px;
+				margin: auto;
+			}
+			.sec1 {
+				display: grid;
+				grid-template-columns: auto auto;
+				grid-gap: 70px;
+				justify-content: center;
+				padding: 10px;
+			}
+			
+			.sec2 {
+				display: grid;
+				grid-template-columns: auto auto auto;
+				grid-gap: 70px;
+				justify-content: center;
+				padding: 10px;
+			}
+			
+			.card-title {
+				font-family:cursive;
+			}
+		
+</body>
+
+</html>
